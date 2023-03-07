@@ -11,23 +11,31 @@ import Clients from "./components/clients";
 import Contact from "./components/contact";
 import Menu from "./components/menu";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Container } from "@mui/system";
+import { Box, Container } from "@mui/system";
+
+import Counter from "./components/counter"
+
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 function App() {
   return (
     <div className="App">
-      <Container maxWidth="sm" sx={{
-        marginTop: "50px"
-      }}>
-        <BrowserRouter>
-          <Menu />
-          <Routes>
-            <Route exact path="about" element={<About />} />
-            <Route exact path="clients" element={<Clients />} />
-            <Route exact path="contact" element={<Contact />} />
-          </Routes>
-        </BrowserRouter>
-      </Container>
+      <Provider store={store}>
+        <Container maxWidth="sm" sx={{ mt: 5 }}>
+          <BrowserRouter>
+            <Box sx={{ mb: 3 }}>
+              <Menu />
+            </Box>
+            <Routes>
+              <Route exact path="about" element={<About />} />
+              <Route exact path="clients" element={<Clients />} />
+              <Route exact path="contact" element={<Contact />} />
+              <Route exact path="counter" element={<Counter />} />
+            </Routes>
+          </BrowserRouter>
+        </Container>
+      </Provider>
     </div>
   );
 }

@@ -3,15 +3,16 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 
 export default function Menu() {
-  // const path = "/contact";
-
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   return (
-    <Tabs value={pathname}>
-      <Tab component={Link} to="/about" label="/about" label="About" />
-      <Tab component={Link} to="/clients" label="/clients" label="Clients" />
-      <Tab component={Link} to="/contact" label="/contact" label="Contact" />
-    </Tabs>
+    <div>
+      <Tabs value={pathname}>
+        <Tab component={Link} to="/about" value="/about" label="About" />
+        <Tab component={Link} to="/clients" value="/clients" label="Clients" />
+        <Tab component={Link} to="/contact" value="/contact" label="Contact" />
+        <Tab component={Link} to="/counter" value="/counter" label="Counter" />
+      </Tabs>
+    </div>
   );
 }
